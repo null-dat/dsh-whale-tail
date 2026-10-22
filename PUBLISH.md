@@ -26,8 +26,18 @@
 | 仓库根有 `cordis.patch.yml` | ✅ |
 | 仓库带 `dsh-plugin` topic | ✅（另加了 `dsh`） |
 | 仓库创建满 1 天 | ⏳ 2026-10-22 建立，明天起满足 |
-| 发到 npm（索引只收有版本号的） | ❌ 待做（`dsh-whale-tail` 名字未占用） |
-| 提 PR | ❌ 待做（明天） |
+| 发到 npm（索引只收有版本号的） | ✅ `dsh-whale-tail@0.1.0`，latest，MIT，126.7KB unpacked |
+| 提 PR | ⏳ 待做（仓库 2026-10-22 建立，明天满 1 天） |
+
+## npm 发布过程记录（踩坑）
+
+1. `npm login` 直接报「Sign up to CNPM / Public registration is not allowed」——因为 `~/.npmrc` 的 `registry` 指向 `registry.npmmirror.com`（只读镜像，不能注册、不能发布）。登录必须显式 `--registry=https://registry.npmjs.org`。
+2. 首次 `npm publish` 报 403：npm 强制发布必须有 2FA 或带 bypass 2FA 的细粒度令牌。
+3. 开了 2FA 但只有「安全密钥」一种方式可选（没有 authenticator app）。安全密钥可用 Windows Hello，但**命令行给不出 WebAuthn 手势**，`--otp=` 只认 TOTP。
+4. 取消「Require two-factor authentication for write actions」也没用：`npm publish` 改为走**网页 OTP 流程**，而该流程在**非 TTY**（管道）环境里拿不到链接（npm 会打印 `https://www.npmjs.com/auth/cli/***` 而不是真实 URL）。
+5. 最终在**真正的交互式终端**里跑 `npm publish`，浏览器完成 verify 后发布成功。npm 会先**分阶段发布（staged）**：registry 上先出现 `0.0.0-stage`，认证通过后 `0.1.0` 才转正。期间立刻重试会得到 `409 Cannot publish over previously staged version`，等一会儿就好。
+
+遗留：registry 里有个 `0.0.0-stage` 版本（分阶段发布的占位），`dist-tags.latest` 是 `0.1.0`，不影响安装。
 
 ## 这次踩的坑（复现时注意）
 
