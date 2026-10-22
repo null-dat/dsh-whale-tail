@@ -11,19 +11,17 @@
 
 ## 安装
 
-**给朋友：拿 `dsh-whale-tail-0.1.0.tgz` 就能装，不需要 Node，也不需要这个仓库。**
-
-1. 打开 DSH Desktop → 左侧 **插件** → 添加插件；
-2. 输入框填压缩包的**绝对路径**（例如 `C:\Users\你\Downloads\dsh-whale-tail-0.1.0.tgz`），或把解压后的插件目录路径填进去；
-3. 安装完成，**刷新页面即可生效**（客户端插件随页面加载，不必重启 DSH Desktop）。
-
-命令行（版本支持时）：
-
 ```powershell
-dsh plugin add C:\Users\你\Downloads\dsh-whale-tail-0.1.0.tgz
+dsh plugin add dsh-whale-tail
 ```
 
-**开发者本地 link**：把插件目录加进 profile 的 `dependencies`（`link:` 前缀）和 `dsh.profile.bundles`，`pnpm install`，重启。
+或直接从 GitHub 装：
+
+```powershell
+dsh plugin add github:null-dat/dsh-whale-tail
+```
+
+**给朋友分享**：把 `dsh-whale-tail-0.1.0.tgz` 发过去，打开 DSH Desktop → 左侧 **插件** → 添加插件 → 填 tgz 的**绝对路径**（或解压后的插件目录路径）→ 安装 → **刷新页面即可生效**（客户端插件随页面加载，不必重启 DSH Desktop）。
 
 ### 改动画 / 重新打包
 
