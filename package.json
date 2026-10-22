@@ -13,6 +13,10 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
