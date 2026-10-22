@@ -1,0 +1,46 @@
+{
+  "name": "dsh-whale-tail",
+  "version": "0.1.0",
+  "description": "针对 DSH 思考模式鲸鱼尾巴的动画，丰富成 4 种动画。Four whale-tail animations for the DSH thinking status line.",
+  "displayName": "鲸鱼尾巴 · 思考中",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "whale",
+    "thinking-indicator",
+    "css-animation"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:watch": "node scripts/build.mjs --watch",
+    "check": "node scripts/build.mjs --check"
+  },
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.2"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  }
+}

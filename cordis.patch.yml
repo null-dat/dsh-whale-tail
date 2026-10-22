@@ -1,0 +1,4 @@
+# Mounts the four-state whale-tail animation beside the running status line.
+- insert:
+    - id: whale-tail
+      name: 'dsh-whale-tail'

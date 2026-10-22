@@ -1,0 +1,25 @@
+{
+  "tile": 48,
+  "states": [
+    {
+      "key": "init",
+      "frames": 26,
+      "loopMs": 1092
+    },
+    {
+      "key": "v1",
+      "frames": 23,
+      "loopMs": 958
+    },
+    {
+      "key": "v2",
+      "frames": 29,
+      "loopMs": 1208
+    },
+    {
+      "key": "v4",
+      "frames": 32,
+      "loopMs": 1333
+    }
+  ]
+}
